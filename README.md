@@ -18,6 +18,7 @@ aprendizado e códigos sobre o estudo de Estrutura de Dados.
 ### Ferramentas utilizadas:
 + JavaScript
 + Visual Studio Code
++ Node.js
 
 ### Material de apoio: 
 
