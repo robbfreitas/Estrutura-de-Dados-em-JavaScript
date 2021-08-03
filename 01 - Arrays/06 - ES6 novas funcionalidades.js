@@ -69,3 +69,39 @@ let numbers4 = Array.of(1, 2, 3, 4, 5, 6);
 
 let numbersCopy = Array.of(...numbers4);
 console.log(numbersCopy);
+
+// Usando o método Fill. Preence um array com um valor.Fill(valor, start, end)
+
+let fillMethod = numbersCopy.fill(0);
+console.log(fillMethod); // 0, 0, 0, 0, 0, 0
+
+fillMethod.fill(2, 1);
+console.log(fillMethod); // 0, 2, 2, 2, 2, 2
+
+fillMethod.fill(1, 3, 5)
+console.log(fillMethod); // 0, 2, 2, 1, 1, 2
+
+// Ótimo para criar um Array e inicializar seus valores. Como:
+
+let ones = Array(6).fill(1);
+console.log(ones); // 1, 1, 1, 1, 1, 1
+
+// Usando o método copyWithin. Copia uma sequência de valores do array p/ a posição de um índice de início
+
+let copyArray = [1, 2, 3, 4, 5, 6];
+
+// Vamos copiar os valores 4, 5 e 6 para as primeiras três posições do array "[4, 5, 6, 4, 5, 6]"
+
+copyArray.copyWithin(0, 3);
+console.log(copyArray); // 4, 5, 6, 4, 5, 6
+
+copyArray.copyWithin(1, 3, 5); // Valores das posições 3 a 5 para a posição 1 do array
+console.log(copyArray) // 4, 4, 5, 4, 5, 6
+
+// Ordenando Elementos
+
+numbers.reverse();
+console.log(numbers); // [15, 14, 13... 3, 2, 1]
+
+numbers.sort((a, b) => a - b); // Essa função serve p/ corrigir o erro do sort ordenar os elementos por tabela ASCII
+console.log(numbers);
