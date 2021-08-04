@@ -105,3 +105,64 @@ console.log(numbers); // [15, 14, 13... 3, 2, 1]
 
 numbers.sort((a, b) => a - b); // Essa função serve p/ corrigir o erro do sort ordenar os elementos por tabela ASCII
 console.log(numbers);
+
+// Ordenação Personalizada 
+
+const friends = [
+    { name: "John", age: 30},
+    { name: "Ana", age: 20},
+    { name: "Chris", age: 25}, // vírgula no final: ES2017
+];
+function comparePerson(a, b) {
+    if (a.age < b.age) {
+        return -1;
+    }
+    if (a.age > b.age) {
+        return 1;
+    }
+    return 0;
+}
+console.log(friends.sort(comparePerson));
+
+// Ordenando Strings
+
+let names = ["Ana", "John", "ana", "john"];
+console.log(names.sort((a, b) => {
+    if (a.toLowerCase() < b.toLowerCase()) {
+        return -1;
+    }
+    if (a.toLowerCase() > b.toLowerCase()) {
+        return 1;
+    }
+    return 0;
+})) // [ 'Ana', 'Ana', 'John', 'John' ] // Ignora letra maiúscula/minúscula
+
+// Para ordenar primeiro por letra minúscula
+
+let firstLower = names.sort((a, b) => a.localeCompare(b));
+console.log(firstLower); // [ 'ana', 'Ana', 'john', 'John' ]
+
+// Pesquisa. indexOf e lastIndexOf
+
+// IndexOf - Devolve o índice do primeiro elemento correspondente ao argumento passado
+
+console.log(numbers.indexOf(10)); // 9
+console.log(numbers.indexOf(100)); // -1 pq não existe
+
+// Last index of - Devolve o índice do último elemento encontrado , correspondente ao arg passado
+
+numbers.push(10);
+console.log(numbers.lastIndexOf(10)); // 15
+console.log(numbers.lastIndexOf(100)); // -1
+console.log(numbers)
+
+let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+function multiplieOf13(element, index, array) {
+    return (element % 13 == 0);
+}
+
+
+// ECMAScript 2015 - Os métodos find e findIndex
+
+console.log(nums.find(multiplieOf13));
+console.log(nums.findIndex(multiplieOf13));
