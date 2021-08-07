@@ -2,9 +2,7 @@ class Stack {
     constructor() {
         this.items = [];
     }
-}
-
-// Push de elementos na pilha, adicionando elementos ao final. Princípio LIFO.
+    // Push de elementos na pilha, adicionando elementos ao final. Princípio LIFO.
 
 push(element) {
     this.items.push(element);
@@ -40,3 +38,10 @@ size() {
 clear() {
     this.items = [];
 }
+
+}
+
+// Usando a classe Stack
+
+const stack = new Stack();
+console.log(stack.isEmpty()); // True
