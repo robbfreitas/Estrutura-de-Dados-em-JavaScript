@@ -21,3 +21,22 @@ pop(element) {
 peek() {
     return this.items[this.items.length - 1];
 }
+
+// Verificando se a pilha está vazia
+
+isEmpty() {
+    return this.items.length === 0;
+}
+// Devolverá true se a pilha estiver vazia(nenhum elemento adicionado), e false caso contrário
+
+// Para coleções, em geral usamos o termo size no lugar de length 
+
+size() {
+    return this.items.length;
+}
+
+// Limpando os elementos da pilha 
+
+clear() {
+    this.items = [];
+}
