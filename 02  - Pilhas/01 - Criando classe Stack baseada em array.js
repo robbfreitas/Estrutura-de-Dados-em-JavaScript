@@ -45,3 +45,27 @@ clear() {
 
 const stack = new Stack();
 console.log(stack.isEmpty()); // True
+
+// Adicionando alguns elementos a pilha.
+stack.push(5);
+stack.push(8);
+
+// Se chamarmos o método peek, o nº 8 será devolvido.
+
+console.log(stack.peek()); // 8. Peek devolve o elemento que está no topo da pilha.
+
+// Vamos adicionar outro elemento.
+
+stack.push(11);
+console.log(stack.size()); // 3
+console.log(stack.isEmpty()); // False
+
+// Acrescentando outro elemento.
+
+stack.push(15)
+
+// Vamos remover dois elementos da pilha com pop.
+
+stack.pop();
+stack.pop();
+console.log(stack.size()); // 2
