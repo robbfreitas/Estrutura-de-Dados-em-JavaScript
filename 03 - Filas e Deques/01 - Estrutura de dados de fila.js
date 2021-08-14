@@ -66,3 +66,29 @@ class Queue {
         return objString;
     }
 }
+
+// Usando a classe Queue
+
+const queue = new Queue();
+console.log(queue.isEmpty()); // True
+
+// Adicionando elementos na fila
+
+queue.enqueue('Robb');
+queue.enqueue('Lucca');
+console.log(queue.toString());
+
+// Acrescentando outro elemento
+
+queue.enqueue('Camila');
+
+// Executando outros comandos
+
+console.log(queue.toString()); // Robb, Lucca, Camila
+console.log(queue.size()); // Exibe 3
+console.log(queue.isEmpty()); // False
+queue.dequeue() // Remove Robb
+console.log(queue.toString()); // Lucca, Camila
+queue.dequeue() // Remove Camila
+console.log(queue.toString()); // Camila
+console.log(queue.size()); // 1
