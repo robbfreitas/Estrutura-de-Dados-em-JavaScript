@@ -2,126 +2,90 @@
 que poderemos adicionar ou remover items do modo que quisermos,
 e ela aumentará conforme for necessário. */
 
-// Criando a classe LinkedList
+// Criando a classe
 
-function LinkedList() {
-  var Node = function (element) {
-    this.element = element;
-    this.next = null;
-  };
-
-  var length = 0;
-  var head = null;
-
-  this.append = function (element) {
-    var node = new Node(element),
-      current;
-
-    if (head === null) {
-      head = node;
-    } else {
-      current = head;
-
-      while (current.next) {
-        current = current.next;
-      }
-
-      current.next = node;
-    }
-    length++;
-  };
-
-  this.insert = function (position, element) {
-    if (position >= 0 && position <= length) {
-      var node = new Node(element),
-        current = head,
-        previous,
-        index = 0;
-
-      if (position === 0) {
-        node.next = current;
-        head = node;
-      } else {
-        while (index++ < position) {
-          previous = current;
-          current = current.next;
-        }
-        node.next = current;
-        previous.next = node;
-      }
-      length++;
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  this.removeAt = function (position) {
-    if (position > -1 && position < length) {
-      var current = head,
-        previous,
-        index = 0;
-
-      if (position === 0) {
-        head = current.next;
-      } else {
-        while (index++ < position) {
-          previous = current;
-          current = current.next;
-        }
-        previous.next = current.next;
-      }
-      length--;
-      return current.element;
-    } else {
-      return null;
-    }
-  };
-
-  this.remove = function (element) {
-    var index = this.indexOf(element);
-    return this.removeAt(index);
-  };
-
-  this.indexOf = function (element) {
-    var current = head,
-      index = 0;
-
-    while (current) {
-      if (element === current.element) {
-        return index;
-      }
-      index++;
-      current = current.next;
-    }
-    return -1;
-  };
-
-  this.isEmpty = function () {
-    return length === 0;
-  };
-
-  this.size = function () {
-    return length;
-  };
-
-  this.getHead = function () {
-    return head;
-  };
-
-  this.toString = function () {
-    var current = head,
-      string = "";
-
-    while (current) {
-      string += current.element + "";
-      current = current.next;
-    }
-
-    return string;
-  };
-
-  this.print = function () {
-    console.log(this.toString());
-  };
+class No {
+  constructor(valor) {
+    this.valor = valor;
+    this.proximo = null;
+  }
 }
+
+class Lista {
+  constructor() {
+    this.cabeca = null;
+  }
+  adicionar(valor) {
+    const novoNo = new No(valor);
+    if(this.cabeca === null) {
+      this.cabeca = novoNo;
+    } else {
+      let atual = this.cabeca;
+      while(atual.proximo !== null) {
+        atual = atual.proximo
+      }
+      atual.proximo = novoNo;
+    }
+  }
+
+  get(posicao) {
+    if(posicao > -1){
+      let atual = this.cabeca;
+      let i = 0;
+      while(atual !== null && i < posicao) {
+        atual = atual.proximo;
+        i++;
+      }
+
+      return atual !== null ? atual.valor : undefined;
+    } else {
+      return undefined;
+    }
+  }
+
+  deletar(posicao) {
+    if(this.cabeca === null || posicao < 0) {
+      throw new RangeError(`Sem item na posição ${posicao}`);
+    }
+
+    if(posicao === 0) {
+      this.cabeca = this.cabeca.proximo;
+      return true;
+    }
+
+    let atual = this.cabeca;
+    let anterior = null;
+    let i = 0;
+    while(atual !== null && i < posicao) {
+      anterior = atual;
+      atual = atual.proximo;
+      i++;
+    }
+
+    if(atual !== null) {
+      anterior.proximo = atual.proximo;
+      return true;
+    }
+    throw new RangeError(`Sem item na posição ${posicao}`);
+  }
+
+  valores() {
+    let atual = this.cabeca;
+    let valores = [];
+    while(atual !== null) {
+      valores.push(atual.valor);
+      atual = atual.proximo;
+    }
+    return valores;
+  }
+}
+
+const lista = new Lista();
+lista.adicionar(1);
+lista.adicionar(2);
+lista.adicionar(3);
+console.log(lista.valores()); // [1, 2, 3]
+lista.deletar(1);
+lista.adicionar(4);
+console.log(lista.valores()); // [1, 3, 4]
+console.log(lista.get(2)); 4
