@@ -65,6 +65,18 @@ class Set {
        }
        return values;
    }
+   union(otherSet) {
+    const unionSet = new Set();
+    let values = this.values();
+    for (let i = 0; i < values.length; i++) {
+        unionSet.add(values[i]);
+    }
+    values = otherSet.values();
+    for( let i = 0; i < values.length; i++) {
+        unionSet.add(values[i]);
+    }
+    return unionSet;
+}
 }
 
 // Usando a classe Set
@@ -93,3 +105,17 @@ elementos presentes em ambos os conjuntos.
 os elementos presentes no primeiro conjunto, porém não no segundo.
    Subconjunto: confirma se um dado conjunto é um subconjunto de outro.
 */
+
+// União
+
+const setA = new Set();
+setA.add(1);
+setA.add(2);
+setA.add(3);
+const setB = new Set();
+setB.add(3);
+setB.add(4);
+setB.add(5);
+setB.add(6);
+const unionAB = setA.union(setB);
+console.log(unionAB.values()); // [ 1, 2, 3, 4, 5, 6 ]
