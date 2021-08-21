@@ -76,7 +76,37 @@ class Set {
         unionSet.add(values[i]);
     }
     return unionSet;
-}
+    }
+    intersection(otherSet) {
+        const intersectionSet = new Set();
+        const values = this.values();
+        for (let i = 0; i < values.length; i++) {
+            if (otherSet.has(values[i])) {
+                intersectionSet.add(values[i]);
+            }
+        }
+        return intersectionSet;
+    }
+    /* Aperfeiçoando o método intersection. Do modo anterior precisa iterar por todos os
+    elementos que existem no conjunto. A forma a seguir itera pelo conjunto com menos 
+    elementos. */
+    // intersection(otherSet) {
+    //     const intersectionSet = new Set();
+    //     const values = this.values();
+    //     const otherSet = otherSet.values();
+    //     let biggerSet = values;
+    //     let smallerSet = otherValues;
+    //     if (otherValues.length - values.length > 0) {
+    //         biggerSet = otherValues;
+    //         smallerSet = values;
+    //     }
+    //     smallerSet.forEach(value => {
+    //         if (biggerSet.includes(value)) {
+    //             intersectionSet.add(value);
+    //         }
+    //     });
+    //     return intersectionSet
+    // }
 }
 
 // Usando a classe Set
@@ -119,3 +149,20 @@ setB.add(5);
 setB.add(6);
 const unionAB = setA.union(setB);
 console.log(unionAB.values()); // [ 1, 2, 3, 4, 5, 6 ]
+
+// Intersecção
+
+const setC = new Set();
+setC.add(1);
+setC.add(2);
+setC.add(3);
+setC.add(4);
+const setD = new Set();
+setD.add(3);
+setD.add(4);
+setD.add(5);
+setD.add(6);
+const intersectionCD = setC.intersection(setD);
+console.log(intersectionCD.values()); // [ 3, 4 ] - valores comuns a setC e setD
+
+// Diferença entre conjuntos
