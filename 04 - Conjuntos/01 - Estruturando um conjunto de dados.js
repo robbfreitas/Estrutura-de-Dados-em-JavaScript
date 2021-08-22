@@ -107,6 +107,17 @@ class Set {
     //     });
     //     return intersectionSet
     // }
+
+    // Diferença de conjuntos
+    difference(otherSet) {
+        const differenceSet = new Set();
+        this.values().forEach(value => {
+            if(!otherSet.has(value)) {
+                differenceSet.add(value);
+            }
+        });
+        return differenceSet;
+    }
 }
 
 // Usando a classe Set
@@ -166,3 +177,14 @@ const intersectionCD = setC.intersection(setD);
 console.log(intersectionCD.values()); // [ 3, 4 ] - valores comuns a setC e setD
 
 // Diferença entre conjuntos
+
+const setE = new Set();
+setE.add(1);
+setE.add(2);
+setE.add(3);
+const setF = new Set();
+setF.add(2);
+setF.add(3);
+setF.add(4);
+const diferrenceEF = setE.difference(setF);
+console.log(diferrenceEF.values()); // 1 - Pois 1 está em setE mas não está em setF
