@@ -118,6 +118,21 @@ class Set {
         });
         return differenceSet;
     }
+    // Subconjunto
+    isSubsetOf(otherSet) {
+        if (this.size() > otherSet.size()) {
+            return false;
+        }
+        let isSubset = true;
+        this.values().every(value => {
+            if (!otherSet.has(value)) {
+                isSubset = false;
+                return false;
+            }
+            return true;
+        })
+        return isSubset;
+    }
 }
 
 // Usando a classe Set
@@ -188,3 +203,19 @@ setF.add(3);
 setF.add(4);
 const diferrenceEF = setE.difference(setF);
 console.log(diferrenceEF.values()); // 1 - Pois 1 está em setE mas não está em setF
+
+// Subconjunto - Todo elemento de A também está em B
+
+const setG = new Set();
+setG.add(1);
+setG.add(2);
+const setH = new Set();
+setH.add(1);
+setH.add(2);
+setH.add(3);
+const setI = new Set();
+setI.add(2);
+setI.add(3);
+setI.add(4);
+console.log(setG.isSubsetOf(setH)); // True
+console.log(setG.isSubsetOf(setI)); // False
