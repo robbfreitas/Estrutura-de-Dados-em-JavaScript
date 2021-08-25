@@ -57,3 +57,22 @@ const difference = (set1, set2) => {
 };
 
 console.log(difference(setA, setB)); // 1
+
+// Usando o operador de espelhamento (spread operator)
+
+// O processo é dividido em três passos:
+// 1 - Converter os conjuntos em arrays.
+// 2 - Executar a operação desejada.
+// 3 - Converter o resultado de volta em um conjunto.
+
+// União de conjuntos usando o operador de espalhamento
+
+console.log(new Set([...setA, ...setB]));
+
+// Interesecção de conjuntos usando o operador de espalhamento
+
+console.log(new Set([...setA].filter(x => setB.has(x))));
+
+// Diferença entre conjuntos usando o operador de espalhamento
+
+console.log(new Set([...setA].filter(x => !setB.has(x))));
