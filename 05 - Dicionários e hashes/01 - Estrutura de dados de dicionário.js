@@ -32,6 +32,11 @@ class Dictionary {
         this.table = {};
     }
 
+    // Verificando se uma chave está presente no dicionário
+    hasKey(key) {
+        return this.table[this.toStrFn(key)] != null;
+    }
+
     // Definindo uma chave e um valor no dicionário, e a classe ValuePair
     set(key, value) {
         if(key != null && value != null) {
@@ -70,7 +75,7 @@ class Dictionary {
     }
 
     keys() {
-        return this.keysValues().map(valuePair => valuePair.key);
+        return this.keyValues().map(valuePair => valuePair.key);
     }
 
     values() {
@@ -114,3 +119,23 @@ class Dictionary {
 }
 
 // Usando a classe Dictionary
+
+const dictionary = new Dictionary();
+dictionary.set('Gandalf', 'gandalf@email.com');
+dictionary.set('John', 'johnsnow@email.com');
+dictionary.set('Tyrion', 'tyrion@email.com');
+console.log(dictionary.hasKey('Gandalf')); // True
+console.log(dictionary.size()); // 3
+console.log(dictionary.keys()); // [ 'Gandalf', 'John', 'Tyrion' ]
+console.log(dictionary.values()); // [ 'gandalf@email.com', 'johnsnow@email.com', 'tyrion@email.com' ]
+console.log(dictionary.get('Tyrion')) // tyrion@email.com
+dictionary.remove('John');
+console.log(dictionary.keys()); // [ 'Gandalf', 'Tyrion' ]
+console.log(dictionary.values()); // [ 'gandalf@email.com', 'tyrion@email.com' ]
+console.log(dictionary.keyValues()); // ValuePair { key: 'Gandalf', value: 'gandalf@email.com' },
+                                     // ValuePair { key: 'Tyrion', value: 'tyrion@email.com' }
+dictionary.forEach((k,v) => {
+    console.log('forEach: ', `key: ${k}, value: ${v}`); 
+});
+// forEach:  key: Gandalf, value: gandalf@email.com
+// forEach:  key: Tyrion, value: tyrion@email.com
