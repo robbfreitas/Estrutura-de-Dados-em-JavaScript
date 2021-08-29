@@ -87,3 +87,23 @@ console.log(hash.hashCode('Tyrion') + ' - Tyrion')
 // 16 - Tyrion
 
 // Tratando colisões nas tabelas hash
+// Encadeamento separado. Consiste em criar uma lista ligada para cada posição da tabela
+// e armazenar aí os elementos. Técnica simples para tratar colisões.
+
+class HashTableSeparateChaining {
+    constructor(toStrFn = defaultToString) {
+        this.toStrFn = toStrFn;
+        this.table = {};
+    }
+    put(key, value) {
+        if(key != null && value != null) {
+            const position = this.hashCode(key);
+            if (this.table[position] == null) {
+                this.table[position] = new LinkedList();
+            }
+            this.table[position].push(new valuePair(key, value));
+            return true;
+        }
+        return false;
+    }
+}
