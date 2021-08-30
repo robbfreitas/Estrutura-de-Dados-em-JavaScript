@@ -106,4 +106,36 @@ class HashTableSeparateChaining {
         }
         return false;
     }
+    get(key) {
+        const position = this.hashCode(key);
+        const linkedList = this.table[position];
+        if (linkedList != null && !linkedList.isEmpty()) {
+            let current = linkedList.getHead();
+            while (current != null) {
+                if (current.element.key === key) {
+                    return current.element.value;
+                }
+                current = current.next;
+            }
+        }
+        return undefined;
+    }
+    remove(key) {
+        const position = this.hashCode(key);
+        const linkedList = this.table[position];
+        if (linkedList != null && !linkedList.isEmpty()) {
+            let current = linkedList.getHead();
+            while (current != null) {
+                if (current.element.key === key) {
+                    linkedList.remove(current.element);
+                    if (linkedList.isEmpty()) {
+                        delete this.table[position];
+                    }
+                    return true;
+                }
+                current = current.next;
+            }
+        }
+        return false;
+    }
 }
